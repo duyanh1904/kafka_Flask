@@ -26,7 +26,7 @@ for message in consumer:
     count_view = todos.find_one({"_id": ObjectId("5fec3488d91f1160d9a452f8")})
     count_view_prop = count_view["views"]
     count_view_prop += 1
-    todos.update({"_id": ObjectId("5fec3488d91f1160d9a452f8")}, {'$set': {"views": count_view_prop}})
+    todos.update_one({"_id": ObjectId("5fec3488d91f1160d9a452f8")}, {'$set': {"views": count_view_prop}})
     # message value and key are raw bytes -- decode if necessary!
     # e.g., for unicode: `message.value.decode('utf-8')`
     print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
